@@ -1,21 +1,21 @@
 # How to handle the -Dexec.args and -Dexec.arguments properties to maven's exec:java goal
 
-## -Dexec.arguments
+## Try -Dexec.arguments
 
 ```
-mvn exec:java -Dexec.mainClass="com.example.App" -Dexec.arguments='O'\''Reilly,The answer is "yes","red, what, and blue"'
+mvn exec:java -Dexec.mainClass="com.example.App" -Dexec.arguments='O'\''Reilly,The answer is "yes","red, white, and blue"'
 ```
 
 *Result:*
 ```
-5 args: <O'Reilly> <The answer is "yes"> <"red> < what> < and blue">
+5 args: <O'Reilly> <The answer is "yes"> <"red> < white> < and blue">
 ```
 
-- Comma separated values
+- We see it uses comma separated values
 - But, unfortunately, it is not compliant with https://en.wikipedia.org/wiki/Comma-separated_values
 - It is, therefore, impossible to specify an argument containing a comma
 
-## -Dexec.args
+## Try -Dexec.args
 
 ```
 mvn exec:java -Dexec.mainClass="com.example.App" -Dexec.args='"O'\''Reilly" '\''The answer is "yes"'\'' "red, white, and blue"'
@@ -26,7 +26,7 @@ mvn exec:java -Dexec.mainClass="com.example.App" -Dexec.args='"O'\''Reilly" '\''
 3 args: <O'Reilly> <The answer is "yes"> <red, white, and blue>
 ```
 
-- White space separated values
+- We see it uses white space separated values
 - Rudimentary quoting is supported using either single or double quotes
 - It is possible to embed a single quote within a double-quoted string argument
 - It is possible to embed a quotation mark with a single-quoted string argument
@@ -120,7 +120,7 @@ red, white, and blue: No worries
 ```
 
 
-*Example usage:*
+### *Example usage:*
 
 ```bash
 exec_using_maven () {
