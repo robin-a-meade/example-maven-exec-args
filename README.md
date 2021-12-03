@@ -32,9 +32,10 @@ mvn exec:java -Dexec.mainClass="com.example.App" -Dexec.args='"O'\''Reilly" '\''
 - It is possible to embed a quotation mark with a single-quoted string argument
 - It is impossible, however, to have an argument that contains both a quotation mark and an apostrophe
 
-## Helper function to prepare bash arguments to be passsed to 
+## Helper function to prepare bash arguments
 
-Here's a bash function to assist with all the escaping that is involved.
+Here's a bash function to assist with all the escaping that is involved in
+passing bash arguments into maven's `-Dexec.java` property.
 
 ```bash
 prepare_args() {
